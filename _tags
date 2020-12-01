@@ -1,0 +1,5 @@
+<shared/**>: package(batteries)
+<shared/**>: include
+
+<01/**>: package(batteries)
+<01/**>: include

@@ -1,27 +1,17 @@
-let input = 
-  let buf = ref [] in
-  try
-    while true;
-    do
-      buf := !buf @ [int_of_string (read_line ())]
-    done;
-    []
-  with _ -> !buf
+open Shared
 
+let input = input_int_list ()
 
-let pp_int fmt i = Format.fprintf fmt "%d" i
+let solve xss =
+  let sum2020 = List.filter (fun xs -> (List.fold_left (+) 0 xs) = 2020) xss in
+  (List.fold_left ( * ) 1) (List.nth sum2020 0)
 
-let pp_list f fmt xs = 
-  Format.fprintf fmt "[";
-  List.iter (Format.fprintf fmt "%a, " f) xs;
-  Format.fprintf fmt "]"
+(* Part 1: find 2 inputs (a, b) which sum to 2020 and print a*b *)
+let () =
+  let list_product = BatList.n_cartesian_product [input; input] in
+  Printf.printf "%d\n" (solve list_product)
 
-let sums2020 = List.map (fun x ->
-    List.filter (fun y -> x + y = 2020) input
-  ) input
-
-
-let () = 
-  let sums2020 = List.filter (fun xs -> List.length xs > 0) sums2020 in
-  let product = List.fold_right (fun x acc -> (List.nth x 0) * acc) sums2020 1 in
-  Printf.printf "%d\n" product
+(* Part 2: find 3 inputs (a, b, c) which sum to 2020 and print a*b*c *)
+let () =
+  let list_product = BatList.n_cartesian_product [input; input; input] in
+  Printf.printf "%d\n" (solve list_product)
