@@ -3,3 +3,6 @@
 
 <01/**>: package(batteries)
 <01/**>: include
+
+<02/**>: package()
+<02/**>: include
