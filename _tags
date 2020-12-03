@@ -6,3 +6,6 @@
 
 <02/**>: package()
 <02/**>: include
+
+<03/**>: package()
+<03/**>: include
