@@ -20,3 +20,6 @@ let explode s = List.init (String.length s) (String.get s)
 let xor a b = (a || b) && not (a && b)
 
 let count x xs = List.fold_right (fun x' acc -> if x = x' then acc + 1 else acc) xs 0
+
+let sum xs = List.fold_right (+) xs 0
+let product xs = List.fold_right ( * ) xs 1

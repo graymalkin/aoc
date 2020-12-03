@@ -7,11 +7,9 @@ type terrain = T | E
 type field = terrain list list
 
 let parse inp =
-  let r = List.fold_left (fun acc xs ->
-      List.map (function '.' -> E | '#' -> T | _ -> raise Not_found) (explode xs) :: acc
-    ) [] inp 
-  in
-  List.rev r
+  List.fold_left (fun acc xs ->
+    acc @ [List.map (function '.' -> E | '#' -> T | _ -> raise Not_found) (explode xs)]
+  ) [] inp 
 
 (* Start at top left of terrain. +x goes across, +y goes down. *)
 let terrain_at_point f x y =
@@ -38,5 +36,4 @@ let () =
   let input = input_string_list () in
   let f = parse input in
   let slopes = List.map (try_slope f) [(1,1); (3, 1); (5, 1); (7,1); (1,2)] in
-  let product = List.fold_right ( * ) slopes 1 in
-  Printf.printf "%d\n" product
+  Printf.printf "%d\n" (product slopes)

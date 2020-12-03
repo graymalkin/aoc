@@ -3,8 +3,8 @@ open Shared
 let input = input_int_list ()
 
 let solve xss =
-  let sum2020 = List.filter (fun xs -> (List.fold_left (+) 0 xs) = 2020) xss in
-  (List.fold_left ( * ) 1) (List.nth sum2020 0)
+  let sum2020 = List.filter (fun xs -> sum xs = 2020) xss in
+  product (List.nth sum2020 0)
 
 (* Part 1: find 2 inputs (a, b) which sum to 2020 and print a*b *)
 let () =
