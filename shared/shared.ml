@@ -23,3 +23,7 @@ let count x xs = List.fold_right (fun x' acc -> if x = x' then acc + 1 else acc)
 
 let sum xs = List.fold_right (+) xs 0
 let product xs = List.fold_right ( * ) xs 1
+
+let pop = function
+ | x :: xs -> (x, xs)
+ | _ -> raise Not_found
