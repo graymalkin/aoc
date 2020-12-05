@@ -1,3 +1,5 @@
+exception Parse_error
+
 let input_string_list () = 
   let buf = ref [] in
   try
@@ -20,6 +22,9 @@ let explode s = List.init (String.length s) (String.get s)
 let xor a b = (a || b) && not (a && b)
 
 let count x xs = List.fold_right (fun x' acc -> if x = x' then acc + 1 else acc) xs 0
+let max cmp xs = List.nth (List.rev @@ List.sort cmp xs) 0
+let min cmp xs = List.nth (List.sort cmp xs) 0
+let range min max = List.init (max - min + 1) ((+) min)
 
 let sum xs = List.fold_right (+) xs 0
 let product xs = List.fold_right ( * ) xs 1
