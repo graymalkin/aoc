@@ -13,9 +13,6 @@ type cid = Cid of int | NorthPoleCredential
 
 type passport = byr * iyr * eyr * hgt * hcl * ecl * pid * cid
 
-let necessary_fields = ["byr"; "iyr"; "eyr"; "hgt"; "hcl"; "ecl"; "pid"]
-let optional_fields = ["cid"]
-
 let parse_birth_year p =
   let ys = List.assoc "byr" p in
   assert (String.length ys = 4);
