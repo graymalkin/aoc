@@ -13,5 +13,8 @@
 <04/**>: package()
 <04/**>: include
 
-<05/**>: package(ppx_deriving.show)
+<05/**>: package()
 <05/**>: include
+
+<06/**>: package(str)
+<06/**>: include

@@ -13,6 +13,9 @@ let input_string_list () =
 let input_int_list () = 
   List.map int_of_string (input_string_list ())
 
+let input_string () =
+  let ss = input_string_list () in
+  String.concat "\n" ss
 
 (* Helpful function to turn strings into list of chars. Thanks stackoverflow.
    https://stackoverflow.com/questions/10068713/string-to-list-of-char
