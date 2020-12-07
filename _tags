@@ -18,3 +18,7 @@
 
 <06/**>: package(str)
 <06/**>: include
+
+<07/**>: package(str)
+<07/**>: include
+true: use_menhir
