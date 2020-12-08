@@ -35,3 +35,7 @@ let product xs = List.fold_right ( * ) xs 1
 let pop = function
  | x :: xs -> (x, xs)
  | _ -> raise Not_found
+
+let maybe d f = function
+  None -> d
+| Some x -> f x

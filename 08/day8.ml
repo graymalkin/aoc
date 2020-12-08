@@ -3,17 +3,6 @@ open BootCode
 
 let parse_program p = ParserBoot.top LexBoot.token (Lexing.from_string p)
 
-(* Returns the register file when the program terminates, or when it loops *)
-let run_no_loop prog =
-  let pc_list = ref [] in
-  let rf = ref initial_state in
-  while not (List.mem !rf.pc !pc_list) && !rf.running;
-  do
-    pc_list := !rf.pc :: !pc_list;
-    rf := execute_instruction !rf prog;
-  done;
-  !rf
-
 let replace_nth xs n v =
   List.init (List.length xs) (fun n' ->
     if n' = n then v
@@ -48,7 +37,7 @@ let () =
   while not (List.mem !pc !pc_list);
   do
     pc_list := !pc :: !pc_list;
-    rf := execute_instruction !rf prog;
+    rf := execute_program !rf prog;
     pc := !rf.pc
   done;
   Printf.printf "%d\n" !rf.acc;
