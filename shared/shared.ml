@@ -28,6 +28,13 @@ let count x xs = List.fold_right (fun x' acc -> if x = x' then acc + 1 else acc)
 let max cmp xs = List.nth (List.rev @@ List.sort cmp xs) 0
 let min cmp xs = List.nth (List.sort cmp xs) 0
 let range min max = List.init (max - min + 1) ((+) min)
+let sublist xs n m = List.init (m - n) (fun i -> List.nth xs (n+i))
+let findi f = 
+  let rec go i = function
+      [] -> raise Not_found
+    | x :: xs -> if f i x then x else go (i+1) xs
+  in
+  go 0
 
 let sum xs = List.fold_right (+) xs 0
 let product xs = List.fold_right ( * ) xs 1

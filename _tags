@@ -25,3 +25,6 @@ true: use_menhir
 
 <08/**>: package()
 <08/**>: include
+
+<09/**>: package(batteries)
+<09/**>: include
