@@ -1,4 +1,5 @@
 open Shared
+exception Short_circuit of int
 
 let is_invalid xs n =
   let combinations = BatList.cartesian_product xs xs in
@@ -13,10 +14,13 @@ let () =
     ) (sublist input preamble_length (List.length input))
   in
   Printf.printf "%d\n" invalid;
-  List.iter (fun length ->
-    List.iter (fun start -> 
-      let window = sublist input start (start + length) in
-      if sum window = invalid
-      then Printf.printf "%d %d\n" length ((min compare window) + (max compare window))
-    ) (range 0 (List.length input - length))
-  ) (range 0 100)
+  try
+    List.iter (fun length ->
+      List.iter (fun start -> 
+        let window = sublist input start (start + length) in
+        if sum window = invalid
+        then raise (Short_circuit ((min compare window) + (max compare window)))
+      ) (range 0 (List.length input - length))
+    ) (List.rev (range 0 20))
+  with Short_circuit x ->
+    Printf.printf "%d\n" x
