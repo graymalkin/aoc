@@ -16,8 +16,6 @@ let () =
   let input = input_string_list () in
   let position_lists = List.map (fun xs -> parse_position @@ List.rev @@ explode xs) input in
   let seat_ids = List.map int_of_position_list position_lists in
-  let max = max compare seat_ids in
-  let min = min compare seat_ids in
-  Printf.printf "%d\n" max;
-  let missing = find_missing seat_ids (min) (max) in
+  Printf.printf "%d\n" (maxs seat_ids);
+  let missing = find_missing seat_ids (mins seat_ids) (maxs seat_ids) in
   Printf.printf "%d\n" (List.nth missing 0)

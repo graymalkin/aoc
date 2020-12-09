@@ -19,7 +19,7 @@ let () =
       List.iter (fun start -> 
         let window = sublist input start (start + length) in
         if sum window = invalid
-        then raise (Short_circuit ((min compare window) + (max compare window)))
+        then raise (Short_circuit (mins window + maxs window))
       ) (range 0 (List.length input - length))
     ) (List.rev (range 0 20))
   with Short_circuit x ->
