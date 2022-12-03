@@ -1,0 +1,15 @@
+[package]
+name = "day3"
+authors = ["Simon Cooksey"]
+version = "0.1.0"
+
+[[bin]]
+name = "puzzle5"
+path = "src/puzzle5.rs"
+
+[[bin]]
+name = "puzzle6"
+path = "src/puzzle6.rs"
+
+[dependencies]
+itertools = "0.10.5"
