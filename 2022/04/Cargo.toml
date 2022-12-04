@@ -1,0 +1,12 @@
+[package]
+name = "day4"
+authors = ["Simon Cooksey"]
+version = "0.1.0"
+
+[[bin]]
+name = "puzzle7"
+path = "src/puzzle7.rs"
+
+[[bin]]
+name = "puzzle8"
+path = "src/puzzle8.rs"
