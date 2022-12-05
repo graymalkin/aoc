@@ -1,0 +1,15 @@
+[package]
+name = "day5"
+authors = ["Simon Cooksey"]
+version = "0.1.0"
+
+[[bin]]
+name = "puzzle9"
+path = "src/puzzle9.rs"
+
+[dependencies]
+regex = "1"
+
+[[bin]]
+name = "puzzle10"
+path = "src/puzzle10.rs"
