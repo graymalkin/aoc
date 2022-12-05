@@ -19,7 +19,6 @@ fn main() {
     let re_crate : Regex = Regex::new(r"\[[A-Z]\]").unwrap();
     let re_crates : Regex = Regex::new(r"(\[([A-Z])\]| ?( {3}))").unwrap();
     let re_crate_ids : Regex = Regex::new(r"^(( [0-9] ) ?)+$").unwrap();
-    let re_seperator_id : Regex = Regex::new(r"^$").unwrap();
     let re_move_command : Regex = Regex::new(r"^move ([0-9]+) from ([0-9]) to ([0-9])$").unwrap();
 
     for line in lines {
@@ -34,20 +33,13 @@ fn main() {
             }
         }
 
-        if re_crate_ids.is_match(&ln[..]) {
-        }
-
-        if re_seperator_id.is_match(&ln[..]) {
-        }
-
         if re_move_command.is_match(&ln[..]) {
             for cap in re_move_command.captures_iter(&ln[..]) {
-                let cmd = MoveCommand {
+                commands.push(MoveCommand {
                     qty: cap[1].parse::<usize>().unwrap(),
                     src: cap[2].parse::<usize>().unwrap(),
                     dst: cap[3].parse::<usize>().unwrap()
-                };
-                commands.push(cmd);
+                });
             }
         }
     }
@@ -63,11 +55,8 @@ fn main() {
         }
     }
 
-    let mut result = "".to_string();
     for stack in stacks {
-        result.push_str(stack.get(stack.len()-1).expect(""));
+        print!("{}", stack.get(stack.len()-1).expect(""));
     }
-
-    
-    println!("{}", result);
+    println!("");
 }
