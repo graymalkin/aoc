@@ -4,10 +4,10 @@ import fileinput
 
 def left(clicks, dial, positions):
     """
-    This is broken, and I cannot figure out how to fix it nicely.
+    This was a fix suggested by James. I don't fully grok why this works.
     """
     dial_new = (dial - positions) % 100
-    extra_clicks = (dial_new + positions) // 100
+    extra_clicks = ((100-dial)%100 + positions) // 100
 
     return (clicks + extra_clicks, dial_new)
 
