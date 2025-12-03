@@ -10,10 +10,7 @@ def is_valid(s):
             continue
         
         id_parts = [s[i:i+parts] for i in range(0, l, parts)]
-        eq_first = []
-        for p in id_parts:
-            eq_first.append(p == id_parts[0])
-        if all(eq_first):
+        if id_parts.count(id_parts[0]) == l//parts:
             return False
 
     return True

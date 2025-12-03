@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import fileinput
+import time
 
 
 def highest_joltage(num_batteries, bank):

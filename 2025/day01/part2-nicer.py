@@ -7,15 +7,15 @@ def left(clicks, dial, positions):
     This was a fix suggested by James. I don't fully grok why this works.
     """
     dial_new = (dial - positions) % 100
-    extra_clicks = ((100-dial)%100 + positions) // 100
+    clicks += ((100-dial)%100 + positions) // 100
 
-    return (clicks + extra_clicks, dial_new)
+    return (clicks, dial_new)
 
 def right(clicks, dial, positions):
     dial_new = (dial + positions) % 100
-    extra_clicks = (dial + positions) // 100
+    clicks += (dial + positions) // 100
 
-    return (clicks + extra_clicks, dial_new)
+    return (clicks, dial_new)
 
 def main():
     dial = 50
