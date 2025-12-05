@@ -34,7 +34,6 @@ def main():
         input_data.append(bank)
         highest = highest_joltage(bank)
         highest_per_bank.append(highest)
-        print("{}: {}".format(bank, highest))
     
     print(functools.reduce(operator.add, highest_per_bank, 0))
 

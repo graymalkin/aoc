@@ -11,10 +11,7 @@ def count_adjacent(x, y, map):
             if xi == 0 and yi == 0:
                 continue
 
-            if x + xi >= bounds_x or x + xi < 0:
-                continue
-            
-            if y + yi >= bounds_y or y + yi < 0:
+            if not (0 <= x + xi < bounds_x) or not (0 <= y + yi < bounds_y):
                 continue
 
             if map[y + yi][x + xi] == "@":

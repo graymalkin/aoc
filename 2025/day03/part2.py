@@ -21,7 +21,7 @@ def main():
     total_joltage = 0
     for line in fileinput.input():
         bank = [int(i) for i in line.strip()]
-        total_joltage += highest_joltage(12, bank)
+        total_joltage += highest_joltage(2, bank)
     
     print(total_joltage)
 
