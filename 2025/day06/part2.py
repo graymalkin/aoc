@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 import fileinput
-import functools
-import re
-import operator
+from math import prod
 
-
-def product(xs):
-    return functools.reduce(operator.mul, xs, 1)
 
 def main():
     worksheet = []
@@ -28,7 +23,7 @@ def main():
         operands.append(int(number_str))
 
         if line[-1] == "*":
-            grand_total += product(operands)
+            grand_total += prod(operands)
         if line[-1] == "+":
             grand_total += sum(operands)
     

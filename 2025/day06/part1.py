@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 import fileinput
-import functools
-import operator
-
+from math import prod
 
 
 def main():
@@ -16,7 +14,7 @@ def main():
         if worksheet[-1][c] == '+':
             grand_total += sum(math_problem)
         elif worksheet[-1][c] == '*':
-            grand_total += functools.reduce(operator.mul, math_problem, 1)
+            grand_total += prod(math_problem)
 
     print(grand_total)
 
